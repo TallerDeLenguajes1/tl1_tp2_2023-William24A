@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 struct compu{
 	int velocidad;
@@ -11,13 +12,17 @@ struct compu{
 typedef struct compu CPU;
 
 void mostrarPC(CPU cp[], int tam){
-	int i;
+	int i,j;
 	for(i=0; i<tam ;i++){
 		printf("\nCPU numero: %d", i+1);
 		printf("\nVelocidad del CPU: %d", cp[i].velocidad);
 		printf("\nAnio de compra del CPU: %d", cp[i].anio);
 		printf("\nCantidad de nucleos del CPU: %d", cp[i].cantidad);
-		printf("\nTipo de procesador: %c", *cp[i].tipo_cpu);
+		printf("\nTipo de procesador:");
+		for(j=0;j<10;j++){
+			printf("%c", *cp[i].tipo_cpu);
+			cp[i].tipo_cpu++;
+		}
 	}	
 }
 
@@ -33,7 +38,11 @@ void masVieja(CPU cp[], int tam){
 	printf("\nVelocidad del CPU: %d", cp[f].velocidad);
 	printf("\nAnio de compra del CPU: %d", cp[f].anio);
 	printf("\nCantidad de nucleos del CPU: %d", cp[f].cantidad);
-	printf("\nTipo de procesador: %c", *cp[f].tipo_cpu);
+	printf("\nTipo de procesador:");
+	for(i=0;i<10;i++){
+		printf("%c", *cp[f].tipo_cpu);
+		cp[f].tipo_cpu++;
+	}
 }
 
 void masVelocidad(CPU cp[], int tam){
@@ -48,45 +57,32 @@ void masVelocidad(CPU cp[], int tam){
 	printf("\nVelocidad del CPU: %d", cp[f].velocidad);
 	printf("\nAnio de compra del CPU: %d", cp[f].anio);
 	printf("\nCantidad de nucleos del CPU: %d", cp[f].cantidad);
-	printf("\nTipo de procesador: %c", *cp[f].tipo_cpu);
+	printf("\nTipo de procesador:");
+	for(i=0;i<10;i++){
+		printf("%c", *cp[f].tipo_cpu);
+		cp[f].tipo_cpu++;
+	}
 }
 
 int main(){
 	CPU nuevo[5];
-	int i,v;
+	int i,aux;
 	char tipos[6][10]={"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
+	
+	srand(time(NULL));
+	
 	for(i=0;i<5;i++){
-		do{
-			printf("\nIngrese la velocidad de su CPU[%d]: ",i);
-			scanf("%d", &v);
-		}while(v<1 || v>3);
-		nuevo[i].velocidad = v;
-		do{
-			printf("Ingrese el anio de su CPU[%d]: ",i);
-			scanf("%d", &v);
-		}while(v<2015 || v>2023);
-		nuevo[i].anio = v;
-		do{
-			printf("Ingrese la cantidad de nucleos de su CPU[%d]: ",i);
-			scanf("%d", &v);
-		}while(v<1 || v>8);
-		nuevo[i].cantidad = v;
-		do{
-			printf("Ingrese un numero para elegir la opcion\n");
-			printf("1- Intel\n");
-			printf("2- AMD\n");
-			printf("3- Celeron\n");
-			printf("4- Athlon\n");
-			printf("5- Core\n");
-			printf("6- Pentium\n");
-			printf("Elige:");
-			scanf("%d", &v);
-			
-		}while(v<1 || v>6);
-		nuevo[i].tipo_cpu= tipos[v];
+
+		nuevo[i].velocidad = 1+rand()%3;
+		
+		nuevo[i].anio = 2015+rand()%9;
+		
+		nuevo[i].cantidad = 1+rand()%8;
+		
+		(*(nuevo+i)).tipo_cpu= *(tipos+rand()%5);
 	}
 	
-	//mostrarPC(nuevo, 5);
+	mostrarPC(nuevo, 5);
 	masVieja(nuevo, 5);
 	masVelocidad(nuevo, 5);
 	return 0;
