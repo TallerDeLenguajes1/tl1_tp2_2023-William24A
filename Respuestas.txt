@@ -1,0 +1,2 @@
+¿Puede ver el archivo tp2_1_2.c? ¿Por qué?
+No puedo ver el archivo tp2_1_2.c, esto se debe al cambio de rama que hice al ultimo paso, todo lo que este con otra rama al hacer un commit no se vera cuando haga el cambio de rama.
