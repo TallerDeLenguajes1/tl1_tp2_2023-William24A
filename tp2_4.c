@@ -18,11 +18,7 @@ void mostrarPC(CPU cp[], int tam){
 		printf("\nVelocidad del CPU: %d", cp[i].velocidad);
 		printf("\nAnio de compra del CPU: %d", cp[i].anio);
 		printf("\nCantidad de nucleos del CPU: %d", cp[i].cantidad);
-		printf("\nTipo de procesador:");
-		for(j=0;j<10;j++){
-			printf("%c", *cp[i].tipo_cpu);
-			cp[i].tipo_cpu++;
-		}
+		printf("\nTipo de procesador:%s", cp[i].tipo_cpu);
 	}	
 }
 
@@ -38,11 +34,7 @@ void masVieja(CPU cp[], int tam){
 	printf("\nVelocidad del CPU: %d", cp[f].velocidad);
 	printf("\nAnio de compra del CPU: %d", cp[f].anio);
 	printf("\nCantidad de nucleos del CPU: %d", cp[f].cantidad);
-	printf("\nTipo de procesador:");
-	for(i=0;i<10;i++){
-		printf("%c", *cp[f].tipo_cpu);
-		cp[f].tipo_cpu++;
-	}
+	printf("\nTipo de procesador:%s", cp[f].tipo_cpu);
 }
 
 void masVelocidad(CPU cp[], int tam){
@@ -57,11 +49,7 @@ void masVelocidad(CPU cp[], int tam){
 	printf("\nVelocidad del CPU: %d", cp[f].velocidad);
 	printf("\nAnio de compra del CPU: %d", cp[f].anio);
 	printf("\nCantidad de nucleos del CPU: %d", cp[f].cantidad);
-	printf("\nTipo de procesador:");
-	for(i=0;i<10;i++){
-		printf("%c", *cp[f].tipo_cpu);
-		cp[f].tipo_cpu++;
-	}
+	printf("\nTipo de procesador:%s", cp[f].tipo_cpu);
 }
 
 int main(){
